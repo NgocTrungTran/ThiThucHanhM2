@@ -5,6 +5,7 @@ import utils.AppUtils;
 public class Menu {
     public static void run() {
         StudentView studentView = new StudentView ();
+        System.out.println ();
         System.out.println ("---- CHƯƠNG TRÌNH QUẢN LÝ SINH VIÊN ----");
         System.out.println ("Chọn chức năng theo số (để tiếp tục)");
         System.out.println ("1. Xem danh sách sinh viên");
@@ -30,10 +31,31 @@ public class Menu {
                 studentView.removeStudent ();
                 break;
             case 5:
-                studentView.sorfStudentByAge ();
+                sorf ();
                 break;
             case 6:
                 AppUtils.exit ();
+                break;
+        }
+    }
+    public static void sorf() {
+        StudentView studentView = new StudentView ();
+        System.out.println ();
+        System.out.println ("---- Sắp xếp sinh viên theo điểm trung bình ----");
+        System.out.println ("Chọn chức năng theo số (để tiếp tục)");
+        System.out.println ("1. Sắp xếp điểm trung bình tăng dần");
+        System.out.println ("2. Sắp xếp điểm trung bình tăng giảm dần");
+        System.out.println ("3. Thoát");
+        int choise = AppUtils.retryChoose ( 1, 3 );
+        switch (choise) {
+            case 1:
+                studentView.sorfStudentByScoreADC ();
+                break;
+            case 2:
+                studentView.sorfStudentByScoreDEC ();
+                break;
+            case 3:
+                run ();
                 break;
         }
     }

@@ -11,5 +11,6 @@ void edit(Student afterStudent);
 void removeByCode(long code);
     boolean existsCode(long code);
     Student getByCode(long code);
-    List<Student> sortAge(List<Student> studentList);
+    List<Student> sortAgeADC(List<Student> studentList);
+    List<Student> sortAgeDEC(List<Student> studentList);
 }

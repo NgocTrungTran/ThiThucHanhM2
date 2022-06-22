@@ -95,11 +95,24 @@ public class StudentServices implements IStudentServices {
     }
 
     @Override
-    public List<Student> sortAge(List<Student> studentList) {
+    public List<Student> sortAgeADC(List<Student> studentList) {
         studentList.sort ( new Comparator<Student> () {
             @Override
             public int compare(Student o1, Student o2) {
-                return o1.getAge () - o2.getAge ();
+                double result = o1.getMediumScore () - o2.getMediumScore ();
+                return result == 0 ? 0 : (result > 0 ? 1 : -1);
+            }
+        } );
+        return studentList;
+    }
+
+    @Override
+    public List<Student> sortAgeDEC(List<Student> studentList) {
+        studentList.sort ( new Comparator<Student> () {
+            @Override
+            public int compare(Student o1, Student o2) {
+                double result = o2.getMediumScore () - o1.getMediumScore ();
+                return result == 0 ? 0 : (result > 0 ? 1 : -1);
             }
         } );
         return studentList;

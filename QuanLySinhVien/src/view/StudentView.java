@@ -110,16 +110,41 @@ public class StudentView {
             }
         } while (true);
     }
-    public void sorfStudentByAge(){
+    public void sorfStudentByScoreADC(){
         do {
             List<Student> studentList = studentServices.findAll ();
-            List<Student> sorfList =  studentServices.sortAge ( studentList );
-            System.out.println ("__________________________________________ DANH SÁCH SINH VIÊN THEO TUỔI __________________________________________");
+            List<Student> sorfList =  studentServices.sortAgeADC ( studentList );
+            System.out.println ("______________________________ DANH SÁCH SINH VIÊN THEO ĐIỂM TRUNG BÌNH _____________________________");
+            System.out.println ("_______________________________________________ GIẢM DẦN ____________________________________________");
             System.out.printf ( "\t%-5s%-20s%-20s%-20s%-20s%-20s%-20s\n",
                     "STT", "Mã Học Viên", "Họ và tên", "Tuổi", "Giới tính", "Địa chỉ", "Điểm TB" );
             int i = 1;
             for (Student student : sorfList) {
-                System.out.printf ( "\t%-5d%-20s%-20s%-20s%-20s%-20s%-20s\n",
+                System.out.printf ( "\t%-5d%-20d%-20s%-20d%-20s%-20s%-20.1f\n",
+                        i, student.getCode (),
+                        student.getFullName (),
+                        student.getAge (),
+                        student.getGender (),
+                        student.getAddress (),
+                        student.getMediumScore ()
+                );
+                i++;
+            }
+            System.out.println ();
+            AppUtils.isRetry ( InputOption.SHOW );
+        }while (true);
+    }
+    public void sorfStudentByScoreDEC(){
+        do {
+            List<Student> studentList = studentServices.findAll ();
+            List<Student> sorfList =  studentServices.sortAgeDEC ( studentList );
+            System.out.println ("______________________________ DANH SÁCH SINH VIÊN THEO ĐIỂM TRUNG BÌNH _____________________________");
+            System.out.println ("_______________________________________________ GIẢM DẦN ____________________________________________");
+            System.out.printf ( "\t%-5s%-20s%-20s%-20s%-20s%-20s%-20s\n",
+                    "STT", "Mã Học Viên", "Họ và tên", "Tuổi", "Giới tính", "Địa chỉ", "Điểm TB" );
+            int i = 1;
+            for (Student student : sorfList) {
+                System.out.printf ( "\t%-5d%-20d%-20s%-20d%-20s%-20s%-20.1f\n",
                         i, student.getCode (),
                         student.getFullName (),
                         student.getAge (),
@@ -141,7 +166,7 @@ public class StudentView {
                     "STT", "Mã Học Viên", "Họ và tên", "Tuổi", "Giới tính", "Địa chỉ", "Điểm TB" );
             int i = 1;
             for (Student student : studentList) {
-                System.out.printf ( "\t%-5d%-20s%-20s%-20s%-20s%-20s%-20s\n",
+                System.out.printf ( "\t%-5d%-20d%-20s%-20d%-20s%-20s%-20.1f\n",
                         i, student.getCode (),
                         student.getFullName (),
                         student.getAge (),
